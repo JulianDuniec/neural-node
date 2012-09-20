@@ -1,4 +1,4 @@
 NeuralNode
 ==========
 
-Neural Network written in NodeJS 
+Neural Network written in NodeJS. 
