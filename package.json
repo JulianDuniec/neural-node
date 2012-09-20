@@ -1,11 +1,11 @@
 {
   "author": "Julian Duniec <julian.duniec@gmail.com>",
-  "name": "neuralnode",
+  "name": "neural-node",
   "description": "Neural network for NodeJs",
   "version": "0.0.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/JulianDuniec/neuralnode.git"
+    "url": "git://github.com/JulianDuniec/neural-node.git"
   },
   "main": "index.js",
   "engines": {
