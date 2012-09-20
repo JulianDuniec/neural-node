@@ -8,10 +8,13 @@ module.exports = function(options) {
 	
 	return {
 		
+		/* Contains entire population of networks */
 		networks : networks,
 
+		/* Contains the option-variables (passed in constructor) */
 		options : options,
 
+		/* Mutates the supplied weights */
 		mutate : function(weights) {
 			var mutated = [];
 			var me = this;
@@ -25,6 +28,7 @@ module.exports = function(options) {
 			return mutated;
 		},
 
+		/* Merges the weights from a and b */
 		merge : function(a, b) {
 			var result = [];
 			var aLength = Math.ceil(a.length/2);
@@ -38,6 +42,7 @@ module.exports = function(options) {
 			return result;
 		},
 
+		/* Calculates the sum of errors between the two supplied arrays */
 		errorRate : function(a, b) {
 			var sumError = 0;
 			for (var i = a.length - 1; i >= 0; i--) {
