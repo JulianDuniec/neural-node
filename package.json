@@ -1,7 +1,7 @@
 {
   "author": "Julian Duniec <julian.duniec@gmail.com>",
   "name": "neuralnode",
-  "description": "Neural network",
+  "description": "Neural network for NodeJs",
   "version": "0.0.0",
   "repository": {
     "type": "git",
