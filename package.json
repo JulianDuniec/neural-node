@@ -1,0 +1,21 @@
+{
+  "author": "Julian Duniec",
+  "name": "nn",
+  "description": "Neural network",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+  "main": "index.js",
+  "engines": {
+    "node": "~0.6.7"
+  },
+  "dependencies": {
+    "nodeunit" : "*"
+  },
+  "scripts" : {
+    "test" : "nodeunit tests/"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
