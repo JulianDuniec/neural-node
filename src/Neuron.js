@@ -15,6 +15,9 @@ module.exports = function(options) {
 			options : options,
 
 			run : function(input) {
+				
+				if(input.length != this.weights.length - 1)
+					throw "Invalid input length: " + input.length + ", expected: " + (this.weights.length - 1);
 				var activation = 0;
 				var imax = input.length;
 				for(var i = 0; i<imax; i++) {

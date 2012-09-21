@@ -56,7 +56,7 @@ exports.geneticAlgorithmTrainer = {
 
 	testXOR : function(test){
 		var geneticAlgorithm = new nn.GeneticAlgorithmTrainer({
-			populationSize : 20,
+			populationSize : 30,
 			mutationRate : 0.3,
 			maxPerbutation : 0.3,
 			neuralNetworkOptions : {
@@ -87,7 +87,7 @@ exports.geneticAlgorithmTrainer = {
 
 	testLinear : function(test) {
 		var geneticAlgorithm = new nn.GeneticAlgorithmTrainer({
-			populationSize : 20,
+			populationSize : 30,
 			mutationRate : 0.3,
 			maxPerbutation : 0.3,
 			neuralNetworkOptions : {

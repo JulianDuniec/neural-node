@@ -1,11 +1,10 @@
 module.exports = function(options) {
 	layers = [];
-	
 	//Add input-layer
 	layers.push(new nn.NeuronLayer({
 		numberOfNeurons : options.numberOfInputs, 
 		numberOfInputsPerNeuron : 1}));
-	
+
 	for(var i = 0; i < options.numberOfHiddenLayers; i++) {
 		if(i == 0) {
 			//First hidden layer should have as many inputs as the numberOfInputs
@@ -50,8 +49,8 @@ module.exports = function(options) {
 		options : options,
 
 		run : function(input) {
-			var result = input;
-			for (var i = 0; i < this.layers.length; i++) {
+			var result = this.layers[0].runAsInputLayer(input);
+			for (var i = 1; i < this.layers.length; i++) {
 				result = this.layers[i].run(result);
 			};
 			return result;

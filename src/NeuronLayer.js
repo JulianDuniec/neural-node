@@ -11,8 +11,17 @@ module.exports = function(options) {
 		neurons : neurons,
 		run : function(input) {
 			var result = [];
+			
 			for(var i = 0; i < this.neurons.length; i++) {
 				result.push(this.neurons[i].run(input));
+			}
+			return result;
+		},
+
+		runAsInputLayer : function(input) {
+			var result = [];
+			for(var i = 0; i < this.neurons.length; i++) {
+				result.push(this.neurons[i].run([input[i]]));
 			}
 			return result;
 		}
