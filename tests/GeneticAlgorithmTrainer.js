@@ -72,7 +72,8 @@ exports.geneticAlgorithmTrainer = {
 			{input : [0, 1], output : [1]},
 			{input : [1, 0], output : [1]},
 			{input : [0, 0], output : [0]},
-		], 3000);
+		], 3500);
+		
 		var res1 = geneticAlgorithm.networks[0].run([1, 1]);
 		var res2 = geneticAlgorithm.networks[0].run([0, 1]);
 		var res3 = geneticAlgorithm.networks[0].run([1, 0]);
@@ -81,6 +82,31 @@ exports.geneticAlgorithmTrainer = {
 		test.ok(res2[0]>0.5, "2:" + res2[0]);
 		test.ok(res3[0]>0.5, "3:" + res3[0]);
 		test.ok(res4[0]<0.5, "4:" + res4[0]);
+		test.done();
+	},
+
+	testLinear : function(test) {
+		var geneticAlgorithm = new nn.GeneticAlgorithmTrainer({
+			populationSize : 20,
+			mutationRate : 0.3,
+			maxPerbutation : 0.3,
+			neuralNetworkOptions : {
+				numberOfInputs : 2,
+				numberOfOutputs : 1,
+				numberOfHiddenLayers : 2,
+				numberOfNeuronsPerHiddenLayer : 4
+			}
+		});
+
+		geneticAlgorithm.train([
+			{input : [0.1, 0.2], output : [0.3]},
+			{input : [0.2, 0.3], output : [0.4]},
+			{input : [0.3, 0.4], output : [0.5]},
+			{input : [0.5, 0.6], output : [0.7]},
+		], 3500);
+		
+		var res1 = geneticAlgorithm.networks[0].run([0.6, 0.7]);
+		test.ok(res1[0] > 0.75 && res1[0] < 0.85, "1:" + res1[0]);
 		test.done();
 	}
 }
