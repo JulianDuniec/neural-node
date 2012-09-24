@@ -12,5 +12,7 @@ module.exports = nn = {
 
 	GeneticAlgorithmTrainer : require('./GeneticAlgorithmTrainer'),
 
-	GeneticAlgorithm : require('./GeneticAlgorithm')
+	GeneticAlgorithm : require('./GeneticAlgorithm'),
+
+	TrainingSetHelper : require('./TrainingSetHelper')
 };

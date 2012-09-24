@@ -17,6 +17,11 @@ module.exports = function(options){
 		};
 	}
 
+	/*
+		Mutates the supplied weights.
+		The chance of mutation is determined by the mutationRate (defaults to 0.2).
+		The weight will change to a random-value times the maxPerbutation
+	*/
 	me.mutate = function(weights) {
 		var mutated = [];
 		weights.forEach(function(weight) {
@@ -29,6 +34,9 @@ module.exports = function(options){
 		return mutated;
 	};
 
+	/*
+		Merges the supplied arrays by taking half A and half B
+	*/
 	me.merge = function(a, b) {
 		var result = [];
 		var aLength = Math.ceil(a.length/2);
@@ -42,6 +50,10 @@ module.exports = function(options){
 		return result;
 	};
 
+	/*
+		Kills all the low-performers (based on fitness) and produces a new array of
+		networks with merged/mutated versions of the best berformers.
+	*/
 	me.epoch = function(networks) {
 		networks.sort(options.sort);
 		
@@ -62,6 +74,8 @@ module.exports = function(options){
 			var mutated = me.mutate(combined);
 			var opts = optionsA;
 			opts.weights = mutated;
+			//Create a new network based on the same
+			//options, but different weights
 			networks.push( new nn.NeuralNetwork(opts));
 		}
 		return networks;

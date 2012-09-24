@@ -56,14 +56,16 @@ exports.geneticAlgorithmTrainer = {
 		var res2 = geneticAlgorithm.networks[0].run([0, 1]);
 		var res3 = geneticAlgorithm.networks[0].run([1, 0]);
 		var res4 = geneticAlgorithm.networks[0].run([0, 0]);
-		test.ok(res1[0]<0.5, "1:" + res1[0]);
-		test.ok(res2[0]>0.5, "2:" + res2[0]);
-		test.ok(res3[0]>0.5, "3:" + res3[0]);
-		test.ok(res4[0]<0.5, "4:" + res4[0]);
+		test.ok(res1[0]<0.5, "1:" + Math.round(res1[0]*1000) / 1000);
+		test.ok(res2[0]>0.5, "2:" + Math.round(res2[0]*1000) / 1000);
+		test.ok(res3[0]>0.5, "3:" + Math.round(res3[0]*1000) / 1000);
+		test.ok(res4[0]<0.5, "4:" + Math.round(res4[0]*1000) / 1000);
 		test.done();
 	},
 
 	testLinear : function(test) {
+		var numberOfInputs = 2;
+		var numberOfOutputs = 1;
 		var geneticAlgorithm = new nn.GeneticAlgorithmTrainer({
 			populationSize : 30,
 			geneticAlgorithm : {
@@ -77,13 +79,9 @@ exports.geneticAlgorithmTrainer = {
 				numberOfNeuronsPerHiddenLayer : 4
 			}
 		});
-
-		geneticAlgorithm.train([
-			{input : [0.1, 0.2], output : [0.3]},
-			{input : [0.2, 0.3], output : [0.4]},
-			{input : [0.3, 0.4], output : [0.5]},
-			{input : [0.5, 0.6], output : [0.7]},
-		], 3500);
+		var dataSet = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
+		var trainingSets = nn.TrainingSetHelper.generateTrainingSet(dataSet, numberOfInputs, numberOfOutputs);
+		geneticAlgorithm.train(trainingSets, 3500);
 		
 		var res1 = geneticAlgorithm.networks[0].run([0.6, 0.7]);
 		test.ok(res1[0] > 0.75 && res1[0] < 0.85, "1:" + res1[0]);
