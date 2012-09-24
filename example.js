@@ -2,8 +2,8 @@ var nn = require('./src/NeuralNetwork.js');
 
 var geneticAlgorithm = new nn.GeneticAlgorithmTrainer({
 		populationSize : 200,
-		mutationRate : 0.3,
-		maxPerbutation : 0.3,
+		geneticAlgorithm: {mutationRate : 0.3,
+		maxPerbutation : 0.3 },
 		neuralNetworkOptions : {
 			numberOfInputs : 4,
 			numberOfOutputs : 1,
