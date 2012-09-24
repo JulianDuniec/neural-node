@@ -35,13 +35,22 @@ console.log("Training network");
 
 geneticAlgorithm.train(
 	trainingSets, 
-	3500, {
+	2000, {
 		epoch : function() {
 			var result = geneticAlgorithm.networks[0].run(input)
 			var estimateRounded = Math.round(result[0] * 100000)/100000;
 			console.log("Approximated: " + estimateRounded + ", real: " + expected);
 		}
-}); 
+});
+
+console.log("**********FINAL RESULTS************");
+var r = [];
+trainingSets.forEach(function(set) {
+	r.push(geneticAlgorithm.networks[0].run(set.input));
+});
+r.push(geneticAlgorithm.networks[0].run(input));
+console.log(r);
+
 
 
 

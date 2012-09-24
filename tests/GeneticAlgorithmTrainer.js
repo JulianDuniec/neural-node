@@ -16,31 +16,7 @@ exports.geneticAlgorithmTrainer = {
 		test.done();
 	},
 
-	testMutate : function(test) {
-		var geneticAlgorithmTrainer = new nn.GeneticAlgorithmTrainer({
-			mutationRate : 1 //Mutate ALL THE THINGS
-		});
-		var weights = [1,1,1,1,1,1,1];
-		var mutatedWeights = geneticAlgorithmTrainer.mutate(weights);
-		test.equal(mutatedWeights.length, weights.length);
-		mutatedWeights.forEach(function(weight) {
-			test.notEqual(1, weight);
-		});
-		test.done();
-	},
-
-	testMerge : function(test) {
-		var geneticAlgorithmTrainer = new nn.GeneticAlgorithmTrainer({
-
-		});
-		var weightsA = [1,1,1,1];
-		var weightsB = [2,2,2,2];
-		var exectedResult = [1,1,2,2];
-
-		var merged = geneticAlgorithmTrainer.merge(weightsA, weightsB);
-		test.deepEqual(merged, exectedResult);
-		test.done();
-	},
+	
 
 	testErrorRate : function(test) {
 		var geneticAlgorithmTrainer = new nn.GeneticAlgorithmTrainer({
@@ -57,8 +33,10 @@ exports.geneticAlgorithmTrainer = {
 	testXOR : function(test){
 		var geneticAlgorithm = new nn.GeneticAlgorithmTrainer({
 			populationSize : 30,
-			mutationRate : 0.3,
-			maxPerbutation : 0.3,
+			geneticAlgorithm : {
+				mutationRate : 0.3,
+				maxPerbutation : 0.3
+			},
 			neuralNetworkOptions : {
 				numberOfInputs : 2,
 				numberOfOutputs : 1,
@@ -88,8 +66,10 @@ exports.geneticAlgorithmTrainer = {
 	testLinear : function(test) {
 		var geneticAlgorithm = new nn.GeneticAlgorithmTrainer({
 			populationSize : 30,
-			mutationRate : 0.3,
-			maxPerbutation : 0.3,
+			geneticAlgorithm : {
+				mutationRate : 0.3,
+				maxPerbutation : 0.3
+			},
 			neuralNetworkOptions : {
 				numberOfInputs : 2,
 				numberOfOutputs : 1,

@@ -10,5 +10,7 @@ module.exports = nn = {
 
 	NeuralNetwork : require('./Network.js'),
 
-	GeneticAlgorithmTrainer : require('./GeneticAlgorithmTrainer')
+	GeneticAlgorithmTrainer : require('./GeneticAlgorithmTrainer'),
+
+	GeneticAlgorithm : require('./GeneticAlgorithm')
 };
