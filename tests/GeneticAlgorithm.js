@@ -45,16 +45,20 @@ exports.GeneticAlgorithm = {
 		}
 
 		var geneticAlgorithm = new nn.GeneticAlgorithm({
+				survivalRate : 0.5
 
 		});
 
 		networks = geneticAlgorithm.epoch(networks);
 
 		test.equal(networks.length, populationSize);
-		test.ok(networks[0].fitness == 9 );
-		test.ok(networks[1].fitness == 8);
-		for(var i = 2; i < networks.length; i++) {
-			test.ok(networks[i].fitness == null );
+		test.ok(networks[0].fitness == 9, "Fitness incorrect");
+		test.ok(networks[1].fitness == 8, "Fitness incorrect");
+		test.ok(networks[2].fitness == 7, "Fitness incorrect");
+		test.ok(networks[3].fitness == 6, "Fitness incorrect");
+		test.ok(networks[4].fitness == 5, "Fitness incorrect");
+		for(var i = 5; i < networks.length; i++) {
+			test.ok(networks[i].fitness == null, "Fitness was not null");
 		}
 
 		test.done();

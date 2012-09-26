@@ -10,6 +10,7 @@
 */
 module.exports = function(options){
 	var me = {};
+	me.survivalRate = options.survivalRate || 0.2;
 	if(!options.sort) {
 		//Default sort-function, sort by fitness descending
 		options.sort = function(a, b) {
@@ -58,18 +59,21 @@ module.exports = function(options){
 		networks.sort(options.sort);
 		
 		var len = networks.length;
+
+		var killIndex = Math.floor(me.survivalRate * len);
 		
 		//Kill the low-performers
-		networks.splice(2);
+		networks.splice(killIndex);
 
 		//get the parents (first and second )
-		var optionsA = networks[0].export();
-		var optionsB = networks[1].export();
-		var weightsA = optionsA.weights;
-		var weightsB = optionsB.weights;
-		var combined = me.merge(weightsA, weightsB);
+		
 		//Add children based on the high-achievers
-		for(var i = 0; i < len-2; i++) {
+		for(var i = 0; i < len-killIndex; i++) {
+			var optionsA = networks[Math.floor(Math.random()*killIndex)].export();
+			var optionsB = networks[Math.floor(Math.random()*killIndex)].export();
+			var weightsA = optionsA.weights;
+			var weightsB = optionsB.weights;
+			var combined = me.merge(weightsA, weightsB);
 			//the same base will be used for every new network, with a unique mutation
 			var mutated = me.mutate(combined);
 			var opts = optionsA;
